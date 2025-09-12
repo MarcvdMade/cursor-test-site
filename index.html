@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Slik TO DO Tracker - Keep track of your tasks and goals">
+    <title>Slik TO DO Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fff5f3',
+                            100: '#ffe8e3',
+                            200: '#ffd5cc',
+                            300: '#ffb8a8',
+                            400: '#ff8f75',
+                            500: '#ff5f39',
+                            600: '#ff3d1a',
+                            700: '#d42a0f',
+                            800: '#b02312',
+                            900: '#922217',
+                            950: '#4f0c07',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fancyHeart {
+            0% {
+                transform: scale(1) rotate(0deg);
+                color: #ff5f39;
+            }
+            25% {
+                transform: scale(1.2) rotate(-5deg);
+                color: #ff8f75;
+            }
+            50% {
+                transform: scale(1.3) rotate(0deg);
+                color: #ff3d1a;
+            }
+            75% {
+                transform: scale(1.2) rotate(5deg);
+                color: #ff8f75;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                color: #ff5f39;
+            }
+        }
+        
+        .fancy-heart {
+            animation: fancyHeart 2s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        .fancy-heart:hover {
+            animation-duration: 0.5s;
+        }
+    </style>
+  <script type="module" crossorigin src="./assets/index-DOuO2X-1.js"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 font-sans leading-relaxed text-gray-800 dark:text-gray-200 transition-colors duration-200">
+    <header class="relative bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 text-white overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-full h-full" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Cdefs%3E%3Cpattern id=%22grid%22 width=%2210%22 height=%2210%22 patternUnits=%22userSpaceOnUse%22%3E%3Cpath d=%22M 10 0 L 0 0 0 10%22 fill=%22none%22 stroke=%22white%22 stroke-width=%220.5%22/%3E%3C/pattern%3E%3C/defs%3E%3Crect width=%22100%22 height=%22100%22 fill=%22url(%23grid)%22/%3E%3C/svg%3E');"></div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-4 left-4 w-16 h-16 bg-white bg-opacity-10 rounded-full animate-pulse"></div>
+        <div class="absolute top-8 right-8 w-12 h-12 bg-white bg-opacity-10 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-4 left-1/4 w-8 h-8 bg-white bg-opacity-10 rounded-full animate-pulse" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-8 right-1/4 w-10 h-10 bg-white bg-opacity-10 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+        
+        <!-- Main Content -->
+        <div class="relative max-w-6xl mx-auto px-5 py-12">
+            
+            <div class="text-center">
+                <!-- Icon -->
+                <div class="mb-6">
+                    <div class="inline-flex items-center justify-center w-20 h-20 bg-white bg-opacity-20 rounded-full backdrop-blur-sm border border-white border-opacity-30">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Title -->
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg">
+                    Slik TO DO Tracker
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="text-xl md:text-2xl text-white mb-6 font-light drop-shadow-md">
+                    Keep track of your tasks and goals the slik way
+                </p>
+                
+                <!-- Decorative Line -->
+                <div class="flex items-center justify-center space-x-4 mb-6">
+                    <div class="h-px bg-gradient-to-r from-transparent via-white to-transparent w-16 opacity-50"></div>
+                    <div class="w-2 h-2 bg-white rounded-full"></div>
+                    <div class="h-px bg-gradient-to-r from-transparent via-white to-transparent w-16 opacity-50"></div>
+                </div>
+                
+                <!-- Stats Preview -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                    <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-white border-opacity-40 shadow-lg">
+                        <div class="text-3xl font-bold text-white mb-2">✓</div>
+                        <div class="text-sm text-black font-medium">Task Management</div>
+                    </div>
+                    <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-white border-opacity-40 shadow-lg">
+                        <div class="text-3xl font-bold text-white mb-2">📝</div>
+                        <div class="text-sm text-black font-medium">Quick Notes</div>
+                    </div>
+                    <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-4 border border-white border-opacity-40 shadow-lg">
+                        <div class="text-3xl font-bold text-white mb-2">🎲</div>
+                        <div class="text-sm text-black font-medium">Random Wheel</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Wave -->
+        <div class="absolute bottom-0 left-0 w-full">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-16 fill-white">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Fixed Theme Toggle Button -->
+    <div class="fixed top-4 right-4 z-50" x-data="ThemeToggle()">
+        <button 
+            @click="toggleTheme()"
+            :title="themeLabel"
+            class="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-600 hover:shadow-xl transition-all duration-200"
+        >
+            <!-- Sun Icon (Light Mode) -->
+            <svg x-show="!isDark" class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <!-- Moon Icon (Dark Mode) -->
+            <svg x-show="isDark" class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <!-- Todo Tracker Main Section -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-colors duration-200" x-data="TodoList()">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 dark:text-white mb-2">Your Tasks</h2>
+                <p class="text-gray-600 dark:text-gray-300">Stay organized and productive</p>
+            </div>
+            
+            <!-- Add Todo Form -->
+            <div class="mb-6">
+                <div class="flex space-x-3">
+                    <input 
+                        x-model="newTodo" 
+                        @keyup.enter="addTodo()"
+                        type="text" 
+                        placeholder="What needs to be done?"
+                        class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-lg placeholder-gray-500 dark:placeholder-gray-400"
+                    >
+                    <button @click="addTodo()" class="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-lg transition-colors font-semibold">
+                        Add Task
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="mb-6" x-show="hasTodos">
+                <div class="relative">
+                    <input 
+                        x-model="searchQuery"
+                        type="text" 
+                        placeholder="Search tasks..."
+                        class="w-full px-4 py-3 pl-12 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-400"
+                    >
+                    <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <button 
+                        x-show="searchQuery"
+                        @click="searchQuery = ''"
+                        class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    >
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Search Results Info -->
+                <div x-show="searchQuery" class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                    <span x-show="hasSearchResults" x-text="`Found ${searchResultCount} task${searchResultCount === 1 ? '' : 's'}`"></span>
+                    <span x-show="!hasSearchResults" class="text-gray-500 dark:text-gray-400">No tasks found matching your search</span>
+                </div>
+            </div>
+
+            <!-- Todo Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-primary-50 dark:bg-primary-900/20 p-4 rounded-lg border-l-4 border-primary-500">
+                    <div class="text-2xl font-bold text-primary-700 dark:text-primary-300" x-text="todos.length"></div>
+                    <div class="text-sm text-primary-600 dark:text-primary-400">Total Tasks</div>
+                </div>
+                <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg border-l-4 border-green-500">
+                    <div class="text-2xl font-bold text-green-700 dark:text-green-300" x-text="completedTodos.length"></div>
+                    <div class="text-sm text-green-600 dark:text-green-400">Completed</div>
+                </div>
+                <div class="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg border-l-4 border-orange-500">
+                    <div class="text-2xl font-bold text-orange-700 dark:text-orange-300" x-text="pendingTodos.length"></div>
+                    <div class="text-sm text-orange-600 dark:text-orange-400">Pending</div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div x-show="hasTodos" class="flex flex-wrap gap-2 mb-6">
+                <button 
+                    x-show="hasCompletedTodos"
+                    @click="clearCompleted()"
+                    class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm transition-colors"
+                >
+                    Clear Completed
+                </button>
+                <button 
+                    @click="clearAll()"
+                    class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors"
+                >
+                    Clear All
+                </button>
+            </div>
+
+            <!-- Todo List -->
+            <div class="space-y-3">
+                <template x-for="todo in filteredTodos" :key="todo.id">
+                    <div class="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border dark:border-gray-600 hover:shadow-md transition-shadow">
+                        <input 
+                            type="checkbox" 
+                            :checked="todo.completed"
+                            @change="toggleTodo(todo.id)"
+                            class="w-5 h-5 text-primary-600 rounded focus:ring-primary-500"
+                        >
+                        <span 
+                            class="flex-1 text-lg text-gray-800 dark:text-gray-200"
+                            :class="{ 'line-through text-gray-500 dark:text-gray-400': todo.completed }"
+                            x-text="todo.text"
+                        ></span>
+                        <button 
+                            @click="removeTodo(todo.id)"
+                            class="text-red-500 hover:text-red-700 transition-colors p-2 hover:bg-red-50 rounded"
+                            title="Delete task"
+                        >
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </template>
+                
+                <!-- Empty State -->
+                <div x-show="todos.length === 0" class="text-center py-12">
+                    <div class="text-gray-400 mb-4">
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-600 dark:text-gray-300 mb-2">No tasks yet</h3>
+                    <p class="text-gray-500 dark:text-gray-400">Add your first task above to get started!</p>
+                </div>
+
+                <!-- No Search Results -->
+                <div x-show="todos.length > 0 && searchQuery && !hasSearchResults" class="text-center py-12">
+                    <div class="text-gray-400 mb-4">
+                        <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-600 dark:text-gray-300 mb-2">No tasks found</h3>
+                    <p class="text-gray-500 dark:text-gray-400">Try adjusting your search terms or <button @click="searchQuery = ''" class="text-primary-500 hover:text-primary-600 underline">clear the search</button></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions Section -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Multi-Counter Widget -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-colors duration-200" x-data="Counter()">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-semibold text-slate-700 dark:text-white">Counters</h3>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-500 dark:text-gray-400" x-text="counters.length + ' counters'"></span>
+                        <button 
+                            @click="showAddForm = !showAddForm" 
+                            class="text-sm bg-primary-500 hover:bg-primary-600 text-white px-2 py-1 rounded transition-colors"
+                            title="Add new counter"
+                        >
+                            +
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Add Counter Form -->
+                <div x-show="showAddForm" class="mb-4 p-3 bg-gray-50 rounded-lg">
+                    <div class="flex space-x-2">
+                        <input 
+                            x-model="newCounterTitle"
+                            @keyup.enter="addCounter()"
+                            type="text" 
+                            placeholder="Counter title..."
+                            class="flex-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm"
+                        >
+                        <button @click="addCounter()" class="bg-primary-500 hover:bg-primary-600 text-white px-3 py-2 rounded text-sm transition-colors">
+                            Add
+                        </button>
+                        <button @click="showAddForm = false" class="bg-gray-500 hover:bg-gray-600 text-white px-3 py-2 rounded text-sm transition-colors">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Total Count Display -->
+                <div x-show="hasCounters" class="mb-4 p-3 bg-primary-50 rounded-lg border-l-4 border-primary-500">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-primary-700" x-text="totalCount"></div>
+                        <div class="text-sm text-primary-600">Total Count</div>
+                    </div>
+                </div>
+
+                <!-- Counters List -->
+                <div class="space-y-3">
+                    <template x-for="counter in counters" :key="counter.id">
+                        <div class="bg-gray-50 p-4 rounded-lg border">
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="font-semibold text-slate-700" x-text="counter.title"></h4>
+                                <button 
+                                    @click="removeCounter(counter.id)"
+                                    class="text-red-500 hover:text-red-700 text-sm"
+                                    title="Delete counter"
+                                >
+                                    ✕
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-center space-x-3">
+                                <button @click="decrement(counter.id)" class="bg-primary-600 hover:bg-primary-700 text-white px-3 py-1 rounded transition-colors">
+                                    -
+                                </button>
+                                <span class="text-2xl font-bold text-slate-800" x-text="counter.count"></span>
+                                <button @click="increment(counter.id)" class="bg-primary-500 hover:bg-primary-600 text-white px-3 py-1 rounded transition-colors">
+                                    +
+                                </button>
+                                <button @click="reset(counter.id)" class="bg-gray-500 hover:bg-gray-600 text-white px-2 py-1 rounded text-sm transition-colors">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <!-- Empty State -->
+                    <div x-show="!hasCounters" class="text-center py-8">
+                        <div class="text-gray-400 mb-2">
+                            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-600 mb-1">No counters yet</h4>
+                        <p class="text-gray-500 text-sm">Click the + button to add your first counter!</p>
+                    </div>
+                </div>
+
+                <!-- Clear All Button -->
+                <div x-show="hasCounters" class="mt-4 text-center">
+                    <button 
+                        @click="clearAllCounters()"
+                        class="text-sm text-red-500 hover:text-red-700 transition-colors"
+                    >
+                        Clear All Counters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Note Widget -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-colors duration-200" x-data="Modal()">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-semibold text-slate-700">Quick Notes</h3>
+                    <span class="text-sm text-gray-500" x-text="notes.length + ' notes'"></span>
+                </div>
+                
+                <!-- Notes List -->
+                <div class="mb-4 max-h-32 overflow-y-auto">
+                    <template x-for="note in notes.slice(-3)" :key="note.id">
+                        <div class="bg-gray-50 p-3 rounded-lg mb-2 text-sm">
+                            <p x-text="note.text"></p>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="text-xs text-gray-500" x-text="note.createdAt"></span>
+                                <button 
+                                    @click="deleteNote(note.id)"
+                                    class="text-red-500 hover:text-red-700 text-xs"
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <!-- Empty State -->
+                    <div x-show="!hasNotes" class="text-center py-4 text-gray-500 text-sm">
+                        No notes yet. Click "Add Note" to get started!
+                    </div>
+                </div>
+                
+                <button 
+                    @click="openModal()"
+                    class="w-full bg-primary-500 hover:bg-primary-600 text-white px-4 py-3 rounded-lg transition-colors font-semibold"
+                >
+                    Add Note
+                </button>
+
+                <!-- Modal -->
+                <div 
+                    x-show="showModal" 
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    x-transition:leave="transition ease-in duration-200"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+                    @click="closeModal()"
+                >
+                    <div 
+                        @click.stop
+                        x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 transform scale-95"
+                        x-transition:enter-end="opacity-100 transform scale-100"
+                        x-transition:leave="transition ease-in duration-200"
+                        x-transition:leave-start="opacity-100 transform scale-100"
+                        x-transition:leave-end="opacity-0 transform scale-95"
+                        class="bg-white rounded-lg p-6 max-w-lg w-full mx-4"
+                    >
+                        <h3 class="text-xl font-semibold mb-4">Quick Note</h3>
+                        
+                        <textarea 
+                            x-model="noteText"
+                            x-ref="noteTextarea"
+                            @keydown.ctrl.enter="saveNote()"
+                            placeholder="Write your note here... (Ctrl+Enter to save)"
+                            class="w-full h-32 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none"
+                        ></textarea>
+                        
+                        <div class="flex space-x-3 mt-4">
+                            <button 
+                                @click="saveNote()"
+                                :disabled="!noteText.trim()"
+                                class="flex-1 bg-primary-500 hover:bg-primary-600 disabled:bg-gray-300 text-white px-4 py-2 rounded-lg transition-colors font-semibold"
+                            >
+                                Save Note
+                            </button>
+                            <button 
+                                @click="closeModal()"
+                                class="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Random Wheel Section -->
+        <div class="mt-8">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-colors duration-200" x-data="RandomWheel()">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl font-semibold text-slate-700">Random Wheel</h3>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-500" x-text="items.length + ' items'"></span>
+                        <button 
+                            @click="showAddForm = !showAddForm" 
+                            class="text-sm bg-primary-500 hover:bg-primary-600 text-white px-2 py-1 rounded transition-colors"
+                            title="Add new item"
+                        >
+                            +
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Add Item Form -->
+                <div x-show="showAddForm" class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <div class="flex space-x-2">
+                        <input 
+                            x-model="newItem"
+                            @keyup.enter="addItem()"
+                            type="text" 
+                            placeholder="Enter an option..."
+                            class="flex-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-500"
+                        >
+                        <button @click="addItem()" class="bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded transition-colors">
+                            Add
+                        </button>
+                        <button @click="showAddForm = false" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded transition-colors">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Wheel Display -->
+                <div class="text-center mb-6">
+                    <div class="relative inline-block">
+                        <!-- Wheel Container -->
+                        <div class="relative w-80 h-80">
+                            <!-- Spinning Wheel -->
+                            <div x-ref="spinningWheel" class="absolute inset-0 rounded-full border-4 border-gray-800 shadow-2xl overflow-hidden" 
+                                 :style="`transform: rotate(0deg); transition: none;`">
+                                <!-- Wheel Background with Conic Gradient -->
+                                <div class="absolute inset-0 rounded-full" 
+                                     :style="`background: conic-gradient(${getConicGradient()});`">
+                                </div>
+                                
+                                <!-- Text Labels -->
+                                <div class="absolute inset-0">
+                                    <template x-for="(item, index) in items" :key="item.id">
+                                        <div class="absolute inset-0 origin-center" 
+                                             :style="`transform: rotate(${index * (360 / items.length) + (360 / items.length / 2)}deg);`">
+                                            <div class="absolute top-8 left-1/2 transform -translate-x-1/2 font-bold text-sm text-center w-20"
+                                                 :style="`transform: translateX(-50%) rotate(${-index * (360 / items.length) - (360 / items.length / 2)}deg); color: ${getTextColor(index)};`">
+                                                <span x-text="item.text.length > 6 ? item.text.substring(0, 6) + '...' : item.text"></span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                            
+                            <!-- Center Circle -->
+                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gray-800 rounded-full border-4 border-white shadow-lg z-10"></div>
+                            
+                            <!-- Pointer -->
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 z-20">
+                                <div class="w-0 h-0 border-l-4 border-r-4 border-b-8 border-l-transparent border-r-transparent border-b-primary-500"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Result Display -->
+                        <div class="mt-6 p-4 bg-white rounded-lg shadow-lg border-2 border-primary-200">
+                            <div x-show="!selectedItem && !isSpinning" class="text-gray-500">
+                                <div class="text-2xl mb-2">🎯</div>
+                                <p class="text-lg font-medium">Click SPIN to start!</p>
+                            </div>
+                            
+                            <div x-show="selectedItem && !isSpinning" class="text-primary-700">
+                                <div class="text-3xl mb-2">🎉</div>
+                                <p class="text-2xl font-bold" x-text="selectedItem.text"></p>
+                                <p class="text-sm text-gray-500">Congratulations!</p>
+                            </div>
+                            
+                            <div x-show="isSpinning" class="text-primary-600">
+                                <div class="text-3xl mb-2 animate-pulse">🎲</div>
+                                <p class="text-xl font-medium">Spinning...</p>
+                                <p class="text-sm text-gray-500">Get ready!</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Spin Button -->
+                        <button 
+                            @click="spinWheel()"
+                            :disabled="!canSpin"
+                            class="mt-4 bg-primary-500 hover:bg-primary-600 disabled:bg-gray-300 text-white px-8 py-4 rounded-full font-bold text-xl shadow-lg transition-colors"
+                        >
+                            <span x-show="!isSpinning">🎯 SPIN THE WHEEL!</span>
+                            <span x-show="isSpinning">⏳ SPINNING...</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Items List -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold mb-3 text-slate-700">Options</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                        <template x-for="item in items" :key="item.id">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg border">
+                                <span class="font-medium" x-text="item.text"></span>
+                                <button 
+                                    @click="removeItem(item.id)"
+                                    class="text-red-500 hover:text-red-700 text-sm"
+                                    title="Remove item"
+                                >
+                                    ✕
+                                </button>
+                            </div>
+                        </template>
+                    </div>
+                    
+                    <!-- Empty State -->
+                    <div x-show="!hasItems" class="text-center py-8">
+                        <div class="text-gray-400 mb-2">
+                            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-600 mb-1">No options yet</h4>
+                        <p class="text-gray-500 text-sm">Add some options to get started!</p>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div x-show="hasItems" class="flex justify-center space-x-4">
+                    <button 
+                        @click="clearAllItems()"
+                        class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded transition-colors"
+                    >
+                        Clear All
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-black text-white text-center py-8 mt-12">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="text-lg font-semibold mb-2 flex items-center justify-center gap-2">
+                Made with 
+                <span class="fancy-heart">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </span>
+                by Marc using Cursor
+            </p>
+            <p class="text-gray-300">Powered by Alpine.js, Tailwind CSS, and Vite</p>
+        </div>
+    </footer>
+</body>
+</html>
